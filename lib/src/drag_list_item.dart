@@ -7,16 +7,16 @@ typedef void OffsetChanged(Offset value);
 
 class DragListItem extends StatefulWidget {
   DragListItem({
-    @required Key key,
-    @required this.builder,
-    @required this.handle,
-    @required this.onDragStop,
-    @required this.onDragUpdate,
-    @required this.onDragTouch,
-    @required this.extent,
-    @required this.status,
-    @required this.animDuration,
-    @required this.scrollDirection,
+    required Key? key,
+    required this.builder,
+    required this.handle,
+    required this.onDragStop,
+    required this.onDragUpdate,
+    required this.onDragTouch,
+    required this.extent,
+    required this.status,
+    required this.animDuration,
+    required this.scrollDirection,
   }) : super(key: key);
 
   final DragListItemBuilder builder;
@@ -35,10 +35,10 @@ class DragListItem extends StatefulWidget {
 
 class DragListItemState extends State<DragListItem>
     with SingleTickerProviderStateMixin {
-  AnimationController _animator;
-  Animation<double> _transAnim;
-  DragItemStatus _status;
-  DragItemStatus _prevStatus;
+  late AnimationController _animator;
+  late Animation<double> _transAnim;
+  DragItemStatus? _status;
+  DragItemStatus? _prevStatus;
 
   @override
   void initState() {

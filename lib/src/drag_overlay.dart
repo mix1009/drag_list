@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class DragOverlay extends StatelessWidget {
   DragOverlay({
-    @required this.child,
-    @required this.elevation,
-    @required this.translation,
-    @required this.itemStart,
-    @required this.itemExtent,
-    @required RenderBox listBox,
-    @required Axis scrollDirection,
+    required this.child,
+    required this.elevation,
+    required this.translation,
+    required this.itemStart,
+    required this.itemExtent,
+    required RenderBox listBox,
+    required Axis scrollDirection,
   })  : this.axisBuilder = AxisOverlayBuilder(scrollDirection),
         this.listPos = listBox.localToGlobal(Offset.zero),
         this.listSize = listBox.size;
@@ -46,8 +46,8 @@ class DragOverlay extends StatelessWidget {
 abstract class AxisOverlayBuilder {
   AxisOverlayBuilder._();
 
-  Positioned builGlobalPos({DragOverlay overlay, Widget child});
-  Positioned buildLocalPos({DragOverlay overlay, Widget child});
+  Positioned builGlobalPos({DragOverlay? overlay, Widget? child});
+  Positioned buildLocalPos({DragOverlay? overlay, Widget? child});
   Offset buildTransOffset(double translation);
 
   factory AxisOverlayBuilder(Axis scrollDirection) =>
@@ -60,24 +60,24 @@ class _VerticalBuilder extends AxisOverlayBuilder {
   _VerticalBuilder() : super._();
 
   @override
-  Positioned builGlobalPos({DragOverlay overlay, Widget child}) {
+  Positioned builGlobalPos({DragOverlay? overlay, Widget? child}) {
     return Positioned(
-      top: overlay.listPos.dy,
+      top: overlay!.listPos.dy,
       height: overlay.listSize.height,
       left: 0.0,
       right: 0.0,
-      child: child,
+      child: child!,
     );
   }
 
   @override
-  Positioned buildLocalPos({DragOverlay overlay, Widget child}) {
+  Positioned buildLocalPos({DragOverlay? overlay, Widget? child}) {
     return Positioned(
-      top: overlay.itemStart,
+      top: overlay!.itemStart,
       height: overlay.itemExtent,
       left: overlay.listPos.dx,
       width: overlay.listSize.width,
-      child: child,
+      child: child!,
     );
   }
 
@@ -89,24 +89,24 @@ class _HorizontalBuilder extends AxisOverlayBuilder {
   _HorizontalBuilder() : super._();
 
   @override
-  Positioned builGlobalPos({DragOverlay overlay, Widget child}) {
+  Positioned builGlobalPos({DragOverlay? overlay, Widget? child}) {
     return Positioned(
       top: 0.0,
       bottom: 0.0,
-      left: overlay.listPos.dx,
+      left: overlay!.listPos.dx,
       width: overlay.listSize.width,
-      child: child,
+      child: child!,
     );
   }
 
   @override
-  Positioned buildLocalPos({DragOverlay overlay, Widget child}) {
+  Positioned buildLocalPos({DragOverlay? overlay, Widget? child}) {
     return Positioned(
-      left: overlay.itemStart,
+      left: overlay!.itemStart,
       width: overlay.itemExtent,
       top: overlay.listPos.dy,
       height: overlay.listSize.height,
-      child: child,
+      child: child!,
     );
   }
 
