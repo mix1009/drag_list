@@ -294,7 +294,9 @@ class DragListState<T> extends State<DragList<T>>
   }
 
   void _onItemDragUpdate(int? index, Offset delta) {
-    _lastTouchOffset += widget.axisOffset(delta);
+    if (_lastTouchOffset != null) {
+      _lastTouchOffset = _lastTouchOffset! + widget.axisOffset(delta);
+    }
     if (_startDragJob != null) {
       _updateStartPoint(delta);
     }
@@ -304,7 +306,9 @@ class DragListState<T> extends State<DragList<T>>
   }
 
   void _updateStartPoint(Offset delta) {
-    _dragStartPoint += delta;
+    if (_dragStartPoint != null) {
+      _dragStartPoint = _dragStartPoint! + delta;
+    }
     final dragSinceTouch =
         widget.axisOffset(_dragStartPoint! - _touchStartPoint!).abs();
     if (dragSinceTouch > widget.itemExtent / 2) {
