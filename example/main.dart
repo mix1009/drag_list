@@ -23,7 +23,7 @@ class CountriesPage extends StatelessWidget {
             ),
             feedbackHandleBuilder: (_, transition) => AnimatedIcon(
               icon: AnimatedIcons.menu_arrow,
-              progress: transition!,
+              progress: transition,
             ),
             itemBuilder: (_, item, handle) => Container(
               height: _itemHeight,

@@ -8,20 +8,20 @@ typedef Widget DragItemBuilder<T>(
 typedef Widget DragHandleBuilder(BuildContext context);
 
 typedef Widget FeedbackDragItemBuilder<T>(BuildContext context,
-    DragItem<T> item, Widget handle, Animation<double>? transition);
+    DragItem<T> item, Widget handle, Animation<double> transition);
 typedef Widget FeedbackDragHandleBuilder(
-    BuildContext context, Animation<double>? transition);
+    BuildContext context, Animation<double> transition);
 
 typedef Widget BareDragItemBuilder<T>(BuildContext context, DragItem<T> item);
 typedef Widget BareFeedbackDragItemBuilder<T>(
-    BuildContext context, DragItem<T> item, Animation<double>? transition);
+    BuildContext context, DragItem<T> item, Animation<double> transition);
 
-typedef void ItemReorderCallback(int? from, int? to);
+typedef void ItemReorderCallback(int from, int to);
 
 class DragItem<T> {
   final T value;
-  final int? itemIndex;
-  final int? dispIndex;
+  final int itemIndex;
+  final int dispIndex;
 
   DragItem(this.value, this.itemIndex, this.dispIndex);
 
